@@ -49,6 +49,14 @@ set wrapscan               " Searches wrap around end-of-file.
 set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
 
+"yank puts text in ~/tmp/.myvimbuf and paste uses that as a buffer
+map <C-y> <Esc>:'<,'>! cat \| tee ~/tmp/.myvimbuf<CR>
+
+map <C-p> o<Esc>:.!cat ~/tmp/.myvimbuf<CR>
+
+map <C-P> O<Esc>:.!cat ~/tmp/.myvimbuf<CR>
+
+
 set list                   " Show non-printable characters.
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'tab:▸ ,extends:❯,precedes:❮,nbsp:±'
